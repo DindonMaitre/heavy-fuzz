@@ -1,0 +1,36 @@
+{#- Carte d'un concert. Variables attendues : c (concert), lang, t (textes), big (true = carte « prochain concert ») -#}
+<article class="card{% if big %} card--big{% endif %}{% if c.status %} card--{{ c.status }}{% endif %}">
+  <a class="card__poster" href="{{ c.urls[lang] }}" tabindex="-1" aria-hidden="true">
+    {%- if c.poster %}
+    {% image c.poster, "", "(min-width: 760px) 340px, 92vw", "", big %}
+    {%- else %}
+    <div class="poster-placeholder">{% image "/assets/img/emblem-dark.png", "", "160px", "", false, [320] %}</div>
+    {%- endif %}
+  </a>
+  <div class="card__body">
+    {%- if c.status %}<p class="badge badge--{{ c.status }}">{{ t.soldOut if c.status == "complet" else (t.cancelled if c.status == "annule" else t.postponed) }}</p>{% endif %}
+    <p class="card__date"><time datetime="{{ c.startUtc | isoDate }}">{{ c.startUtc | date(t.locale, "long") }}</time></p>
+    <h3 class="card__title"><a href="{{ c.urls[lang] }}">{{ c.title }}</a></h3>
+    {%- if c.support.length %}<p class="card__support">+ {{ c.support | join(" + ") }}</p>{% endif %}
+    <ul class="facts">
+      <li>{% icon "map" %}<span>{{ c.venue.name }}, {{ c.venue.city or c.venue.address }}</span></li>
+      {%- if c.doors %}<li>{% icon "clock" %}<span>{{ t.doors }} {{ c.doors | time(lang) }}</span></li>{% endif %}
+      {%- include "price.njk" %}
+    </ul>
+    <div class="actions">
+      {%- if c.tickets and c.status != "complet" and c.status != "annule" and not c.isPast %}
+      <a class="btn btn--primary" href="{{ c.tickets }}">{% icon "ticket" %}{{ t.tickets }}</a>
+      {%- endif %}
+      {%- if not c.isPast and c.status != "annule" %}
+      <details class="addcal">
+        <summary class="btn btn--ghost">{% icon "calendar-plus" %}{{ t.addToCalendar }}</summary>
+        <div class="addcal__menu">
+          <a href="{{ c.googleUrl }}" rel="noopener">{{ t.googleCalendar }}</a>
+          <a href="{{ c.icsUrl }}" download>{{ t.appleOutlook }}</a>
+        </div>
+      </details>
+      {%- endif %}
+      <a class="btn btn--link" href="{{ c.urls[lang] }}">{{ t.seeDetails }}{% icon "arrow" %}</a>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,88 @@
+# Mise à jour automatique du site Heavy Fuzz
+# - toutes les 6 heures (pour récupérer les nouveaux concerts du Google Agenda)
+# - à chaque modification du dépôt (branche main)
+# - à la demande : onglet « Actions » → « Mise à jour du site » → « Run workflow »
+name: Mise à jour du site
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 */6 * * *" # 0h17, 6h17, 12h17, 18h17 (heure UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  actions: write # pour garder la tâche planifiée active (voir dernière étape)
+
+# Une seule mise à jour à la fois
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Construire
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Lire la configuration GitHub Pages (adresse du site)
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Synchroniser le Google Agenda
+        run: npm run sync
+        env:
+          # Adresse iCal publique de l'agenda : variable ou secret « ICAL_URL » du dépôt
+          ICAL_URL: ${{ secrets.ICAL_URL || vars.ICAL_URL }}
+
+      - name: Vérifier (tests)
+        run: npm test
+
+      - name: Construire le site
+        run: npm run build
+        env:
+          # Adresse publique (https://heavyfuzz.be ou https://xxx.github.io/depot)
+          SITE_URL: ${{ vars.SITE_URL || steps.pages.outputs.base_url }}
+          PATH_PREFIX: ${{ steps.pages.outputs.base_path }}/
+
+      - name: Préparer la mise en ligne
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    name: Mettre en ligne
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publier sur GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  keepalive:
+    # GitHub met en pause les tâches planifiées d'un dépôt sans activité depuis 60 jours.
+    # Cette étape « réactive » le workflow à chaque passage pour éviter ça.
+    name: Garder la mise à jour automatique active
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh workflow enable deploy.yml --repo "$GITHUB_REPOSITORY"
+        env:
+          GH_TOKEN: ${{ github.token }}

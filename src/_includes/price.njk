@@ -1,0 +1,8 @@
+{#- Ligne « prix » : un tarif par ligne. Variables : c, lang, t -#}
+{%- if c.free == "gratuit" %}
+<li>{% icon "euro" %}<span>{{ t.free }}</span></li>
+{%- elif c.free == "prix-libre" %}
+<li>{% icon "euro" %}<span>{{ t.payWhatYouWant }}</span></li>
+{%- elif c.prices and c.prices.length %}
+<li>{% icon "euro" %}<span>{% for p in c.prices %}{% if p.label %}{{ p.label | priceLabel(lang) }}{{ t.colon }} {% endif %}<strong>{{ p.amount }} €</strong>{% if not loop.last %}<br>{% endif %}{% endfor %}</span></li>
+{%- endif %}

@@ -1,0 +1,246 @@
+/* =========================================================
+   Heavy Fuzz — feuille de style
+   Mobile d'abord. Couleurs tirées du logo.
+   ========================================================= */
+
+/* ---------- Polices (hébergées sur le site, pas chez Google) ---------- */
+@font-face {
+  font-family: "Big Shoulders Display";
+  src: url("../fonts/big-shoulders-display-900.woff2") format("woff2");
+  font-weight: 900; font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-latin.woff2") format("woff2");
+  font-weight: 100 900; font-display: swap;
+}
+
+/* ---------- Couleurs et réglages ---------- */
+:root {
+  --noir: #1D1D1D;
+  --noir-2: #262321;       /* cartes */
+  --noir-3: #312c28;       /* survol, bordures */
+  --ocre: #C38E40;
+  --ocre-clair: #DDA85A;
+  --violet: #9B4F96;
+  --violet-clair: #C98FC4; /* version lisible du violet sur fond sombre (contraste AA) */
+  --creme: #F2E8D5;
+  --creme-2: #CDBFA8;      /* texte secondaire */
+  --rouge: #D9534F;
+  --radius: 14px;
+  --titre: "Big Shoulders Display", Impact, "Arial Narrow", sans-serif;
+  --texte: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background-color: var(--noir);
+  /* Grain discret façon affiche sérigraphiée */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color: var(--creme);
+  font: 400 1rem/1.55 var(--texte);
+}
+img { max-width: 100%; height: auto; display: block; }
+picture { display: block; }
+a { color: var(--violet-clair); text-underline-offset: 3px; }
+a:hover { color: var(--creme); }
+:focus-visible { outline: 3px solid var(--ocre-clair); outline-offset: 3px; border-radius: 4px; }
+.icon { flex: none; width: 1.25em; height: 1.25em; }
+.muted { color: var(--creme-2); }
+.todo { background: #5a1f1f; color: #fff; padding: .5rem .75rem; border-radius: 8px; font-weight: 600; }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 1rem; top: 1rem; z-index: 10; background: var(--ocre); color: var(--noir); padding: .5rem 1rem; }
+
+/* Titres : police condensée + ombre ocre décalée, comme le logo */
+.page-title, .section-title, .card__title, .concert__title, .topbar__logo span {
+  font-family: var(--titre);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  line-height: 1;
+  text-shadow: .06em .06em 0 var(--ocre);
+}
+.page-title { font-size: clamp(2.4rem, 9vw, 4rem); margin: 1.5rem 0 1.25rem; }
+.section-title {
+  font-size: 1.9rem; margin: 2.5rem 0 1rem; color: var(--creme);
+  display: flex; align-items: center; gap: .5rem;
+}
+
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.wrap--narrow { max-width: 640px; }
+
+/* ---------- Barre du haut ---------- */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 10px 16px; border-bottom: 1px solid var(--noir-3);
+  position: sticky; top: 0; z-index: 5;
+  background: rgba(29, 29, 29, .92); backdrop-filter: blur(6px);
+}
+.topbar__logo { display: flex; align-items: center; gap: .6rem; color: var(--creme); text-decoration: none; }
+.topbar__logo img { width: 44px; height: 44px; object-fit: contain; }
+.topbar__logo span { font-size: 1.6rem; text-shadow: 2px 2px 0 var(--ocre); }
+.topbar nav { display: flex; gap: 1rem; }
+.topbar nav a { color: var(--creme); text-decoration: none; font-weight: 600; padding: .4rem 0; }
+.topbar nav a[aria-current="page"], .topbar nav a:hover { color: var(--ocre-clair); box-shadow: inset 0 -2px 0 var(--ocre); }
+
+/* ---------- En-tête de l'accueil (photo live) ---------- */
+.hero { position: relative; overflow: hidden; min-height: 340px; display: grid; place-items: center; padding: 40px 16px 48px; }
+.hero__photo { position: absolute; inset: 0; }
+.hero__photo picture { height: 100%; }
+.hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: saturate(.8); }
+.hero__photo::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(29,29,29,.55) 0%, rgba(29,29,29,.7) 60%, var(--noir) 100%);
+}
+.hero__content { position: relative; text-align: center; }
+.hero__logo { margin: 0 auto; width: min(300px, 70vw); filter: drop-shadow(0 6px 18px rgba(0,0,0,.6)); }
+.hero__tagline { margin: 1rem auto 0; max-width: 28ch; font-size: 1.1rem; font-weight: 600; text-shadow: 0 2px 8px #000; }
+.hero__credit { position: absolute; right: 10px; bottom: 6px; margin: 0; font-size: .72rem; }
+.hero__credit a { color: var(--creme-2); text-decoration: none; }
+
+/* ---------- Boutons ---------- */
+.actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 48px; padding: .7rem 1.1rem; border-radius: 999px;
+  font: 600 1rem/1.2 var(--texte); text-decoration: none; cursor: pointer;
+  border: 2px solid transparent; transition: background-color .15s, color .15s, border-color .15s;
+}
+.btn--primary { background: var(--ocre); color: var(--noir); }
+.btn--primary:hover { background: var(--ocre-clair); color: var(--noir); }
+.btn--ghost { background: transparent; color: var(--creme); border-color: var(--creme-2); }
+.btn--ghost:hover { border-color: var(--violet-clair); color: var(--violet-clair); }
+.btn--link { color: var(--violet-clair); padding-inline: .3rem; }
+.btn--wide { flex: 1 1 100%; }
+
+/* Menu « Ajouter à mon agenda » (sans JavaScript) */
+.addcal { position: relative; }
+.addcal summary { list-style: none; }
+.addcal summary::-webkit-details-marker { display: none; }
+.addcal__menu {
+  position: absolute; z-index: 3; top: calc(100% + 6px); left: 0; min-width: 230px;
+  background: var(--noir-3); border: 1px solid #4a423b; border-radius: 12px; padding: .4rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+.addcal__menu a { display: block; padding: .75rem .9rem; border-radius: 8px; color: var(--creme); text-decoration: none; font-weight: 600; }
+.addcal__menu a:hover { background: var(--noir-2); color: var(--ocre-clair); }
+
+/* ---------- Liens façon « linktree » ---------- */
+.links { list-style: none; padding: 0; margin: 0; display: grid; gap: .65rem; }
+.link {
+  display: flex; align-items: center; gap: .85rem;
+  min-height: 56px; padding: .8rem 1.1rem; border-radius: var(--radius);
+  background: var(--noir-2); border: 1px solid var(--noir-3);
+  color: var(--creme); text-decoration: none; font-weight: 600; font-size: 1.05rem;
+  transition: transform .12s, border-color .12s, background-color .12s;
+}
+.link .icon { color: var(--ocre); }
+.link span { flex: 1; }
+.link .icon--end { color: var(--creme-2); width: 1em; }
+.link:hover { border-color: var(--violet); background: var(--noir-3); color: var(--creme); transform: translateY(-1px); }
+
+/* ---------- Cartes concert ---------- */
+.cards { display: grid; gap: 1.25rem; }
+.card {
+  display: grid; grid-template-columns: 1fr; overflow: visible;
+  background: var(--noir-2); border: 1px solid var(--noir-3); border-radius: var(--radius);
+}
+.card__poster { display: block; }
+.card__poster img { width: 100%; border-radius: var(--radius) var(--radius) 0 0; aspect-ratio: 4 / 5; object-fit: cover; }
+.card__body { padding: 1rem 1.1rem 1.2rem; }
+.card__date { margin: 0 0 .2rem; color: var(--ocre-clair); font-weight: 600; }
+.card__date time { display: inline-block; }
+.card__date time::first-letter, .facts time::first-letter { text-transform: uppercase; }
+.facts time { display: inline-block; }
+.card__title { font-size: 2.3rem; margin: 0; }
+.card__title a { color: var(--creme); text-decoration: none; }
+.card__title a:hover { color: var(--ocre-clair); }
+.card__support { margin: .2rem 0 0; font-weight: 600; color: var(--creme-2); }
+.poster-placeholder { aspect-ratio: 4 / 5; display: grid; place-items: center; background: var(--noir-3); border-radius: var(--radius) var(--radius) 0 0; }
+.poster-placeholder img { width: 50%; opacity: .5; aspect-ratio: auto; }
+.card--annule .card__poster img { filter: grayscale(1) brightness(.6); }
+.card--big .card__title { font-size: 2.8rem; }
+
+.facts { list-style: none; padding: 0; margin: .8rem 0 0; display: grid; gap: .35rem; }
+.facts li { display: flex; gap: .55rem; align-items: flex-start; }
+.facts .icon { color: var(--ocre); margin-top: .1em; }
+.facts--big { font-size: 1.08rem; gap: .6rem; }
+.facts small { color: var(--creme-2); font-size: .9rem; }
+
+.badge {
+  display: inline-block; margin: 0 0 .5rem; padding: .2rem .7rem; border-radius: 999px;
+  font-weight: 700; font-size: .85rem; text-transform: uppercase; letter-spacing: .05em;
+  background: var(--violet); color: #fff;
+}
+.badge--annule { background: var(--rouge); }
+.note { margin: 1rem 0 0; padding: .6rem .9rem; border-left: 4px solid var(--violet); background: rgba(155,79,150,.15); font-weight: 600; }
+.empty { padding: 1.25rem; background: var(--noir-2); border-radius: var(--radius); }
+
+/* ---------- Fiche concert ---------- */
+.crumbs { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin: 1rem 0; }
+.crumbs a { display: inline-flex; align-items: center; gap: .35rem; }
+.langs { display: flex; gap: .25rem; }
+.langs a { padding: .35rem .55rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: .9rem; color: var(--creme-2); }
+.langs a[aria-current="page"] { background: var(--ocre); color: var(--noir); }
+.concert__grid { display: grid; gap: 1.5rem; }
+.concert__poster img { width: 100%; border-radius: var(--radius); box-shadow: 0 12px 40px rgba(0,0,0,.5); }
+.concert__tagline { margin: 0; color: var(--violet-clair); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: .9rem; }
+.concert__title { font-size: clamp(3rem, 13vw, 5rem); margin: .2rem 0 .3rem; }
+.concert__support { margin: 0; font-size: 1.2rem; font-weight: 600; color: var(--creme-2); }
+.concert__desc { margin-top: 1.5rem; font-size: 1.05rem; }
+.lineup { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
+.lineup li { display: grid; gap: .15rem; padding: .85rem 1rem; background: var(--noir-2); border-radius: 12px; border: 1px solid var(--noir-3); }
+.lineup strong { font-size: 1.15rem; }
+.lineup__links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: .25rem; }
+.lineup__links a { display: inline-flex; align-items: center; gap: .3rem; }
+
+/* ---------- Agenda ---------- */
+.subscribe { margin-top: 2.5rem; padding: 1.25rem; border-radius: var(--radius); border: 1px dashed var(--ocre); }
+.subscribe .section-title { margin-top: 0; }
+.past { margin: 2.5rem 0; }
+.past summary { cursor: pointer; list-style: none; }
+.past summary::-webkit-details-marker { display: none; }
+.past summary .section-title::after { content: "▾"; font-size: .7em; text-shadow: none; color: var(--ocre); }
+.past[open] summary .section-title::after { content: "▴"; }
+.gallery { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+.gallery a { display: block; color: var(--creme); text-decoration: none; }
+.gallery img { border-radius: 10px; aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(.85); }
+.gallery a:hover img { filter: none; }
+.gallery__caption { display: block; font-size: .85rem; margin-top: .35rem; color: var(--creme-2); }
+
+/* ---------- Pages de texte ---------- */
+.prose p, .prose li { font-size: 1.05rem; }
+.prose .lead { font-size: 1.3rem; color: var(--ocre-clair); }
+.venues { padding-left: 1.2rem; display: grid; gap: .6rem; }
+.photo { margin: 2.5rem 0 0; }
+.photo img { border-radius: var(--radius); }
+.photo figcaption { font-size: .85rem; margin-top: .4rem; color: var(--creme-2); }
+
+/* ---------- Pied de page ---------- */
+.footer { margin-top: 4rem; padding: 2rem 16px 2.5rem; border-top: 1px solid var(--noir-3); text-align: center; color: var(--creme-2); font-size: .9rem; }
+.footer p { margin: .4rem 0; }
+.footer a { color: var(--creme-2); }
+.footer__social { display: flex; justify-content: center; gap: 1.25rem; }
+.footer__social a { color: var(--ocre); padding: .4rem; }
+.footer__credit { font-size: .8rem; }
+
+/* ---------- Écrans plus larges ---------- */
+@media (min-width: 760px) {
+  .card { grid-template-columns: 300px 1fr; }
+  .card__poster img, .poster-placeholder { border-radius: var(--radius) 0 0 var(--radius); height: 100%; }
+  .card--big { grid-template-columns: 1fr; }
+  .card--big .card__poster img { border-radius: var(--radius) var(--radius) 0 0; height: auto; }
+  .gallery { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+  .hero { min-height: 420px; }
+}
+@media (min-width: 900px) {
+  .concert__grid { grid-template-columns: minmax(0, 480px) 1fr; gap: 2.5rem; align-items: start; }
+  .concert__poster { position: sticky; top: 90px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

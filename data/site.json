@@ -1,0 +1,30 @@
+{
+  "_aide": "Réglages généraux du site. Les valeurs vides (\"\") sont des TODO à compléter.",
+  "name": "Heavy Fuzz",
+  "url": "https://heavyfuzz.be",
+  "_url_aide": "TODO domaine : tant que heavyfuzz.be n'est pas branché, la GitHub Action remplace cette valeur par l'adresse GitHub Pages (variable SITE_URL).",
+  "tagline": {
+    "fr": "Concerts stoner, psyché & heavy rock en Wallonie",
+    "en": "Stoner, psych & heavy rock gigs in Wallonia",
+    "nl": "Stoner-, psych- & heavy-rockconcerten in Wallonië"
+  },
+  "slogan": "Bringing The Fuzz Next To You!",
+  "email": "contact.heavyfuzz@gmail.com",
+  "_email_aide": "TODO : remplacer par contact@heavyfuzz.be une fois la redirection OVH en place.",
+  "instagram": "https://www.instagram.com/heavy.fuzz/",
+  "facebook": "https://www.facebook.com/profile.php?id=61570221584729",
+  "billetweb": "https://www.billetweb.fr/multi_event.php?user=242548",
+  "asso": {
+    "legalName": "Heavy Fuzz ASBL",
+    "enterpriseNumber": "BE 1017.394.297",
+    "seat": "Villers-la-Ville",
+    "founded": "2024-12-13"
+  },
+  "photoCredit": {
+    "text": "Photo : Joachim – Shoot Me Again",
+    "url": "https://www.shootmeagain.com"
+  },
+  "goatcounter": "",
+  "_goatcounter_aide": "TODO stats : nom du compte GoatCounter (ex. \"heavyfuzz\" pour heavyfuzz.goatcounter.com). Vide = pas de statistiques.",
+  "timezone": "Europe/Brussels"
+}

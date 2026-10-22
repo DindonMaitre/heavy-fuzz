@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heavy Fuzz – Choix de police</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Bungee&family=Limelight&family=Monoton&family=Righteous&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* Page de comparaison uniquement — pas une page du site */
+  :root { --noir:#1D1D1D; --ocre:#C38E40; --violet:#9B4F96; --creme:#F2E8D5; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--noir); color:var(--creme); font:16px/1.5 Inter, system-ui, sans-serif; }
+  header { padding:24px 16px; text-align:center; }
+  header img { width:min(280px,70vw); }
+  header p { opacity:.8; max-width:640px; margin:8px auto; }
+  .grid { display:grid; gap:24px; padding:16px; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); max-width:1400px; margin:auto; }
+  .option { border:1px solid #333; border-radius:12px; padding:16px; background:#222; }
+  .label { font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--violet); font-weight:600; margin-bottom:12px; }
+  .title { font-size:40px; line-height:1.05; margin:0 0 6px; color:var(--creme); text-shadow:3px 3px 0 var(--ocre); }
+  .section { font-size:22px; color:var(--ocre); margin:18px 0 10px; }
+  .card { display:grid; grid-template-columns:110px 1fr; gap:12px; background:#181818; border-radius:10px; padding:10px; }
+  .card img { width:100%; border-radius:6px; display:block; }
+  .card h3 { font-size:24px; margin:0; color:var(--creme); text-shadow:2px 2px 0 var(--ocre); line-height:1.1; }
+  .card .meta { font-size:14px; opacity:.85; margin:4px 0 8px; }
+  .btn { display:block; text-align:center; padding:12px; border-radius:10px; background:var(--ocre); color:var(--noir); font-weight:600; text-decoration:none; margin-top:12px; }
+  .btn.alt { background:transparent; border:2px solid var(--creme); color:var(--creme); }
+  .f-bungee .t { font-family:Bungee, sans-serif; }
+  .f-righteous .t { font-family:Righteous, sans-serif; }
+  .f-limelight .t { font-family:Limelight, serif; }
+  .f-monoton .t { font-family:Monoton, sans-serif; font-weight:400; }
+  .f-shoulders .t { font-family:"Big Shoulders Display", sans-serif; font-weight:900; text-transform:uppercase; letter-spacing:.02em; }
+  .f-monoton .title { font-size:34px; }
+  .f-shoulders .title { font-size:48px; }
+  .f-shoulders .card h3 { font-size:30px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../src/assets/img/logo-dark.png" alt="Heavy Fuzz">
+  <p>Comparaison des polices de titre (texte courant : Inter). Chaque carte montre un grand titre, un intertitre et la carte « prochain concert » avec l'affiche, pour voir si la police fait concurrence à l'affiche.</p>
+</header>
+<main class="grid">
+  <!-- Le même bloc, répété pour chaque police -->
+  <template id="tpl">
+    <div class="label"></div>
+    <h1 class="title t">Heavy Fuzz</h1>
+    <p>Concerts stoner, psyché &amp; heavy rock en Wallonie</p>
+    <h2 class="section t">Prochain concert</h2>
+    <div class="card">
+      <img src="poster-sample.webp" alt="Affiche Mr. Bison + Acid Talk">
+      <div>
+        <h3 class="t">Mr. Bison</h3>
+        <div class="meta">+ Acid Talk<br>Ven. 23 oct. · 20h00<br>Belvédère, Namur<br>Prévente 13 € · Soutien 15 €</div>
+      </div>
+    </div>
+    <a class="btn" href="#">Billetterie</a>
+    <a class="btn alt" href="#">Ajouter à mon agenda</a>
+  </template>
+  <section class="option f-bungee" data-name="1 · Bungee"></section>
+  <section class="option f-righteous" data-name="2 · Righteous"></section>
+  <section class="option f-limelight" data-name="3 · Limelight"></section>
+  <section class="option f-shoulders" data-name="4 · Big Shoulders Display"></section>
+  <section class="option f-monoton" data-name="5 · Monoton"></section>
+</main>
+<script>
+  const tpl = document.getElementById('tpl');
+  document.querySelectorAll('.option').forEach(s => {
+    s.append(tpl.content.cloneNode(true));
+    s.querySelector('.label').textContent = s.dataset.name;
+  });
+</script>
+</body>
+</html>

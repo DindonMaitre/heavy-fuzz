@@ -1,0 +1,37 @@
+---
+permalink: /next/
+eleventyExcludeFromCollections: true
+---
+{#-
+  /next : adresse fixe du QR code et des puces NFC.
+  Redirige vers la fiche du prochain concert (ou l'agenda s'il n'y en a pas).
+  Le choix est refait dans le navigateur (au cas où un concert vient de se terminer
+  depuis la dernière mise à jour du site), avec une redirection de secours sans JavaScript.
+  Les paramètres de suivi (?src=qr-flyer…) sont transmis à la page de destination.
+-#}
+{%- set fallback = concerts.next.url if concerts.next else "/agenda/" -%}
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Prochain concert · Heavy Fuzz</title>
+  <meta http-equiv="refresh" content="2; url={{ fallback }}">
+  <link rel="canonical" href="{{ site.url }}{{ fallback }}">
+  <style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#1D1D1D;color:#F2E8D5;font:16px/1.5 system-ui,sans-serif;text-align:center}a{color:#C38E40}</style>
+</head>
+<body>
+  <p>{{ i18n.fr.redirecting }}<br><a href="{{ fallback }}">{{ site.url }}{{ fallback }}</a></p>
+  <script>
+    // [adresse, fin du concert] pour chaque concert à venir, du plus proche au plus lointain
+    var concerts = {{ concerts.upcoming | nextList | dump | safe }};
+    var base = "{{ '/' | url }}".replace(/\/$/, "");
+    var now = Date.now(), target = "/agenda/";
+    for (var i = 0; i < concerts.length; i++) {
+      if (new Date(concerts[i][1]).getTime() > now) { target = concerts[i][0]; break; }
+    }
+    location.replace(base + target + location.search);
+  </script>
+</body>
+</html>

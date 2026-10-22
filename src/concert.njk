@@ -1,0 +1,84 @@
+---
+layout: base.njk
+ogType: article
+pagination:
+  data: concertPages
+  size: 1
+  alias: item
+permalink: "{{ item.concert.urls[item.lang] }}"
+eleventyComputed:
+  lang: "{{ item.lang }}"
+  title: "{{ item.concert.summary }} – {{ item.concert.startUtc | date(i18n[item.lang].locale, 'compact') }}"
+  description: "{{ item.concert.startUtc | date(i18n[item.lang].locale, 'long') }} · {{ item.concert.venue.name }}, {{ item.concert.venue.city }} · {{ item.concert.summary }}"
+  ogImage: "{{ item.concert.poster }}"
+---
+{%- set c = item.concert -%}
+{%- set lang = item.lang -%}
+{%- set t = i18n[lang] -%}
+<div class="wrap concert" lang="{{ lang }}">
+  <p class="crumbs">
+    <a href="/agenda/">{% icon "back" %}{{ t.backToAgenda }}</a>
+    <span class="langs" aria-label="{{ t.otherLanguages }}">
+      {%- for l in langs %}
+      <a href="{{ c.urls[l] }}" hreflang="{{ l }}" lang="{{ l }}"{% if l == lang %} aria-current="page"{% endif %}>{{ l | upper }}</a>
+      {%- endfor %}
+    </span>
+  </p>
+
+  <div class="concert__grid">
+    <div class="concert__poster">
+      {%- if c.poster %}
+      {% image c.poster, t.posterOf + " : " + c.summary + ", " + (c.startUtc | date(t.locale, "long")) + ", " + c.venue.name, "(min-width: 900px) 480px, 100vw", "", true %}
+      {%- endif %}
+    </div>
+
+    <div class="concert__info">
+      {%- if c.status %}<p class="badge badge--{{ c.status }}">{{ t.soldOut if c.status == "complet" else (t.cancelled if c.status == "annule" else t.postponed) }}</p>{% endif %}
+      {%- if c.tagline %}<p class="concert__tagline">{{ c.tagline }}</p>{% endif %}
+      <h1 class="concert__title">{{ c.title }}</h1>
+      {%- if c.support.length %}<p class="concert__support">{{ t.with }} {{ c.support | join(" + ") }}</p>{% endif %}
+
+      <ul class="facts facts--big">
+        <li>{% icon "calendar" %}<span><time datetime="{{ c.startUtc | isoDate }}">{{ c.startUtc | date(t.locale, "long") }}</time></span></li>
+        {%- if c.doors %}<li>{% icon "clock" %}<span>{{ t.doors }} {{ c.doors | time(lang) }}</span></li>{% endif %}
+        <li>{% icon "map" %}<span>{{ c.venue.name }}<br><small>{{ c.venue.address }}</small></span></li>
+        {%- include "price.njk" %}
+      </ul>
+      {%- if c.note %}<p class="note">{{ c.note | tr(lang) }}</p>{% endif %}
+
+      <div class="actions">
+        {%- if c.tickets and c.status != "complet" and c.status != "annule" and not c.isPast %}
+        <a class="btn btn--primary btn--wide" href="{{ c.tickets }}">{% icon "ticket" %}{{ t.tickets }}</a>
+        {%- endif %}
+        {%- if not c.isPast and c.status != "annule" %}
+        <a class="btn btn--ghost" href="{{ c.googleUrl }}" rel="noopener">{% icon "calendar-plus" %}{{ t.googleCalendar }}</a>
+        <a class="btn btn--ghost" href="{{ c.icsUrl }}" download>{% icon "calendar-plus" %}{{ t.appleOutlook }}</a>
+        {%- endif %}
+        <a class="btn btn--ghost" href="{{ c.venue.mapsUrl }}" rel="noopener">{% icon "map" %}{{ t.map }}</a>
+        {%- if c.venue.website %}<a class="btn btn--link" href="{{ c.venue.website }}" rel="noopener">{{ t.venueWebsite }}{% icon "external" %}</a>{% endif %}
+      </div>
+
+      {%- if c.description %}
+      <div class="concert__desc"><p>{{ c.description | tr(lang) }}</p></div>
+      {%- endif %}
+      {%- if c.forFansOf %}<p class="muted"><strong>{{ t.forFansOf }}{{ t.colon }}</strong> {{ c.forFansOf }}</p>{% endif %}
+      {%- if c.partners %}<p class="muted"><strong>{{ t.partners }}{{ t.colon }}</strong> {{ c.partners | tr(lang) }}</p>{% endif %}
+
+      <h2 class="section-title">{{ t.lineup }}</h2>
+      <ul class="lineup">
+        {%- for b in c.lineup %}
+        <li>
+          <strong>{{ b.name }}</strong>
+          {%- if b.genre or b.origin %}<span class="muted">{{ b.genre }}{% if b.genre and b.origin %} · {% endif %}{{ b.origin | tr(lang) }}</span>{% endif %}
+          <span class="lineup__links">
+            {%- if b.bandcamp %}<a href="{{ b.bandcamp }}" rel="noopener">{% icon "disc" %}Bandcamp</a>{% endif %}
+            {%- if b.instagram %}<a href="{{ b.instagram }}" rel="noopener">{% icon "instagram" %}Instagram</a>{% endif %}
+          </span>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{#- Données structurées schema.org (Google, moteurs de recherche) #}
+<script type="application/ld+json">{{ c | jsonLd(lang, site) | safe }}</script>

@@ -1,0 +1,59 @@
+---
+layout: base.njk
+title: À propos
+description: Heavy Fuzz est une ASBL namuroise qui organise des concerts stoner, psyché, doom et heavy rock en Wallonie.
+permalink: /a-propos/
+---
+<div class="wrap wrap--narrow prose">
+  <h1 class="page-title">À propos</h1>
+
+  {#- Texte PROVISOIRE rédigé pour la présentation à l'asso : à relire et à corriger #}
+  <p class="lead">
+    <strong>Bringing The Fuzz Next To You!</strong>
+  </p>
+  <p>
+    <strong>Heavy Fuzz</strong> est une association sans but lucratif (ASBL) née fin 2024,
+    portée par une équipe de bénévoles passionnés de musiques lourdes et planantes.
+  </p>
+  <p>
+    Notre idée est simple : faire venir près de chez nous les groupes de stoner, de rock
+    psychédélique, de doom, de sludge et de tout ce qui fait vibrer les amplis, qu'ils viennent
+    de Belgique ou d'ailleurs, et les faire jouer dans des salles à taille humaine.
+    Pour l'instant, ça se passe surtout à Namur, au Belvédère et au Creed.
+  </p>
+  <p>
+    Un groupe à nous proposer, envie de filer un coup de main lors d'un concert,
+    ou simplement une question ? Écrivez-nous !
+  </p>
+
+  <h2 class="section-title">Nous contacter</h2>
+  <ul class="links">
+    <li><a class="link" href="mailto:{{ site.email }}">{% icon "mail" %}<span>{{ site.email }}</span></a></li>
+    <li><a class="link" href="mailto:{{ site.email }}?subject=Booking%20-%20proposition%20de%20groupe">{% icon "mic" %}<span>Booking : proposer un groupe</span></a></li>
+    <li><a class="link" href="{{ site.instagram }}">{% icon "instagram" %}<span>Instagram</span></a></li>
+    <li><a class="link" href="{{ site.facebook }}">{% icon "facebook" %}<span>Facebook</span></a></li>
+  </ul>
+
+  <h2 class="section-title">Nos salles partenaires</h2>
+  <ul class="venues">
+    <li>
+      <strong>Le Belvédère</strong> · Avenue Marie d'Artois 1, 5000 Namur<br>
+      <a href="https://www.belvedere-namur.be" rel="noopener">belvedere-namur.be</a>
+    </li>
+    <li>
+      <strong>The Creed (bar &amp; events)</strong> · Rue de la Monnaie 20, 5000 Namur
+    </li>
+  </ul>
+
+  <h2 class="section-title">Infos légales</h2>
+  <p>
+    {{ site.asso.legalName }} · numéro d'entreprise {{ site.asso.enterpriseNumber }}<br>
+    Siège social : {{ site.asso.seat }}<br>
+    Ce site n'utilise pas de cookies.
+  </p>
+
+  <figure class="photo">
+    {% image "/assets/img/live-joachim-shootmeagain.jpg", "Deux guitaristes sur scène sous des lumières orange", "(min-width: 700px) 640px, 92vw" %}
+    <figcaption><a href="{{ site.photoCredit.url }}">{{ site.photoCredit.text }}</a></figcaption>
+  </figure>
+</div>

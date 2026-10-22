@@ -1,0 +1,15 @@
+{
+  "_aide": "Boutons de la page d'accueil, dans l'ordre d'affichage. Un bouton dont l'adresse (url) est vide n'est pas affiché. Icônes possibles : ticket, instagram, facebook, calendar, bell, mail, mic, shop, music, newsletter.",
+  "links": [
+    { "label": "Billetterie (Billetweb)", "url": "https://www.billetweb.fr/multi_event.php?user=242548", "icon": "ticket" },
+    { "label": "Instagram", "url": "https://www.instagram.com/heavy.fuzz/", "icon": "instagram" },
+    { "label": "Facebook", "url": "https://www.facebook.com/profile.php?id=61570221584729", "icon": "facebook" },
+    { "label": "Agenda complet", "url": "/agenda/", "icon": "calendar" },
+    { "label": "S'abonner à nos concerts", "url": "/agenda/#abonnement", "icon": "bell" },
+    { "label": "Newsletter", "url": "", "icon": "newsletter", "_todo": "TODO : lien d'inscription à la newsletter" },
+    { "label": "Boutique merch", "url": "", "icon": "shop", "_todo": "TODO : lien de la boutique" },
+    { "label": "Playlist", "url": "", "icon": "music", "_todo": "TODO : lien Spotify ou YouTube" },
+    { "label": "Booking : proposer un groupe", "url": "mailto:contact.heavyfuzz@gmail.com?subject=Booking%20-%20proposition%20de%20groupe", "icon": "mic" },
+    { "label": "Contact", "url": "mailto:contact.heavyfuzz@gmail.com", "icon": "mail" }
+  ]
+}

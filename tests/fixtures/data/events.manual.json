@@ -1,0 +1,38 @@
+{
+  "events": [
+    {
+      "date": "2026-10-23",
+      "title": "Mr. Bison",
+      "tagline": "Heavy Fuzz Goes Psych!",
+      "lineup": [
+        "Mr. Bison",
+        "Acid Talk"
+      ],
+      "venue": "belvedere",
+      "doors": "20:00",
+      "end": "23:55",
+      "prices": [
+        {
+          "label": "Prévente",
+          "amount": 13
+        },
+        {
+          "label": "Ticket de soutien",
+          "amount": 15
+        },
+        {
+          "label": "Étudiant (prévente)",
+          "amount": 9
+        }
+      ],
+      "tickets": "https://www.billetweb.fr/mr-bison-it-acid-talk",
+      "poster": "2026-10-23-mr-bison.jpg",
+      "forFansOf": "Elder, King Buffalo, Colour Haze, Thee Oh Sees, All Them Witches, King Gizzard & The Lizard Wizard",
+      "description": {
+        "fr": "Un voyage à travers toutes les nuances du heavy psych. Mr. Bison (Italie) vient défendre son nouvel album « The Garden of Forgotten Dreams » pour sa toute première date en Wallonie, avec en ouverture les Liégeois d'Acid Talk.",
+        "en": "A journey through the many shades of heavy psych. Italy's Mr. Bison bring their new album “The Garden of Forgotten Dreams” to Wallonia for the very first time, with Liège garage-psych outfit Acid Talk opening.",
+        "nl": "Een reis door alle tinten van heavy psych. Het Italiaanse Mr. Bison speelt zijn nieuwe album „The Garden of Forgotten Dreams” voor het eerst in Wallonië, met de Luikse garagepsychband Acid Talk als voorprogramma."
+      }
+    }
+  ]
+}

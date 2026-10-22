@@ -1,0 +1,6 @@
+---
+permalink: /agenda.ics
+eleventyExcludeFromCollections: true
+---
+{#- Flux d'abonnement : tous les concerts (à venir + passés). Lien webcal:// sur la page agenda. -#}
+{{ concerts.all | ics(site.url, true) | safe }}

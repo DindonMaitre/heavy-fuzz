@@ -1,0 +1,17 @@
+{
+  "_aide": "Salles connues. La clé (ex. \"belvedere\") est reconnue automatiquement si le lieu d'un événement Google contient un des mots de \"match\".",
+  "belvedere": {
+    "name": "Le Belvédère",
+    "address": "Avenue Marie d'Artois 1, 5000 Namur",
+    "city": "Namur",
+    "website": "https://www.belvedere-namur.be",
+    "match": ["belvedere", "belvédère", "marie d'artois"]
+  },
+  "creed": {
+    "name": "The Creed (bar & events)",
+    "address": "Rue de la Monnaie 20, 5000 Namur",
+    "city": "Namur",
+    "website": "",
+    "match": ["creed", "rue de la monnaie"]
+  }
+}

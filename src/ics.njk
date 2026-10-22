@@ -1,0 +1,10 @@
+---
+pagination:
+  data: concerts.all
+  size: 1
+  alias: c
+permalink: "{{ c.icsUrl }}"
+eleventyExcludeFromCollections: true
+---
+{#- Fichier .ics d'un concert (bouton « Apple / Outlook ») -#}
+{{ [c] | ics(site.url, false) | safe }}

@@ -1,0 +1,65 @@
+{
+  "_aide": "Fiche des groupes (réutilisée d'un concert à l'autre). Le nom doit correspondre à celui écrit dans « Line-up ». « origin » peut être un simple texte ou une version par langue {fr, en, nl}. Les liens vides ne sont pas affichés.",
+  "Mr. Bison": {
+    "origin": {
+      "fr": "Italie",
+      "en": "Italy",
+      "nl": "Italië"
+    },
+    "genre": "Progressive Heavy Psych",
+    "bandcamp": "https://mrbison.bandcamp.com",
+    "instagram": "https://www.instagram.com/mrbison_band/"
+  },
+  "Acid Talk": {
+    "origin": {
+      "fr": "Liège",
+      "en": "Liège",
+      "nl": "Luik"
+    },
+    "genre": "Garage Psych Rock",
+    "bandcamp": "https://acidtalk.bandcamp.com",
+    "instagram": ""
+  },
+  "FVZZ POPVLI": {
+    "origin": {
+      "fr": "Rome, Italie",
+      "en": "Rome, Italy",
+      "nl": "Rome, Italië"
+    },
+    "genre": "Heavy Psych / Proto-Doom / Garage Rock",
+    "bandcamp": "https://fvzzpopvli.bandcamp.com",
+    "instagram": "https://www.instagram.com/fvzzpopvli"
+  },
+  "The WRS": {
+    "origin": "Charleroi",
+    "genre": "Garage Psych",
+    "bandcamp": "https://thewirestheband.bandcamp.com",
+    "instagram": "https://www.instagram.com/the_wrs_the_band"
+  },
+  "Modder": {
+    "origin": {
+      "fr": "Gand",
+      "en": "Ghent",
+      "nl": "Gent"
+    },
+    "genre": "Sludge / Doom Metal",
+    "bandcamp": "https://modder.bandcamp.com",
+    "instagram": ""
+  },
+  "Aufhebung": {
+    "origin": {
+      "fr": "Bruxelles",
+      "en": "Brussels",
+      "nl": "Brussel"
+    },
+    "genre": "Post-Metal / Sludge",
+    "bandcamp": "https://aufhebung.bandcamp.com",
+    "instagram": ""
+  },
+  "Massive Therapy": {
+    "origin": "Charleroi",
+    "genre": "Progressive Post-Metal",
+    "bandcamp": "https://massivetherapy.bandcamp.com",
+    "instagram": ""
+  }
+}

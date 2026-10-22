@@ -1,0 +1,77 @@
+{#- Mise en page commune à toutes les pages -#}
+{%- set lang = lang or "fr" -%}
+{%- set t = i18n[lang] -%}
+{%- set pageTitle = (title + " · " + site.name) if title else (site.name + " · " + (site.tagline | tr(lang))) -%}
+{%- set pageDesc = description or (site.tagline | tr(lang)) -%}
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDesc }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta name="theme-color" content="#1D1D1D">
+  {%- if item and item.concert %}
+  {%- for l, u in item.concert.urls %}
+  <link rel="alternate" hreflang="{{ l }}" href="{{ site.url }}{{ u }}">
+  {%- endfor %}
+  {%- endif %}
+
+  {#- Partage (Facebook, WhatsApp, Instagram…) #}
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:title" content="{{ title or site.name }}">
+  <meta property="og:description" content="{{ pageDesc }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:locale" content="{{ t.locale | replace('-', '_') }}">
+  {%- set shareImg = ogImage or "/assets/img/logo-light.png" %}
+  <meta property="og:image" content="{{ site.url }}{{ shareImg | imageUrl }}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="/assets/fonts/big-shoulders-display-900.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  {% favicons %}
+  <link rel="alternate" type="text/calendar" title="Heavy Fuzz – Concerts" href="/agenda.ics">
+  {%- if jsonld %}
+  <script type="application/ld+json">{{ jsonld | safe }}</script>
+  {%- endif %}
+</head>
+<body class="{{ bodyClass }}">
+  <a class="skip" href="#contenu">{{ "Aller au contenu" if lang == "fr" else ("Skip to content" if lang == "en" else "Naar de inhoud") }}</a>
+
+  {%- if not hideNav %}
+  <header class="topbar">
+    <a class="topbar__logo" href="/" aria-label="{{ site.name }} – {{ t.home }}">
+      {% image "/assets/img/emblem-dark.png", "", "44px", "", true, [88] %}
+      <span>Heavy Fuzz</span>
+    </a>
+    <nav aria-label="Navigation principale">
+      <a href="/agenda/"{% if page.url == "/agenda/" %} aria-current="page"{% endif %}>{{ t.agenda }}</a>
+      <a href="/a-propos/"{% if page.url == "/a-propos/" %} aria-current="page"{% endif %}>{{ t.about }}</a>
+    </nav>
+  </header>
+  {%- endif %}
+
+  <main id="contenu">
+    {{ content | safe }}
+  </main>
+
+  <footer class="footer">
+    <p class="footer__social">
+      <a href="{{ site.instagram }}" aria-label="Instagram">{% icon "instagram" %}</a>
+      <a href="{{ site.facebook }}" aria-label="Facebook">{% icon "facebook" %}</a>
+      <a href="mailto:{{ site.email }}" aria-label="E-mail">{% icon "mail" %}</a>
+    </p>
+    <p>{{ site.asso.legalName }} · {{ site.asso.enterpriseNumber }} · {{ site.asso.seat }}</p>
+    <p><a href="/">{{ t.home }}</a> · <a href="/agenda/">{{ t.agenda }}</a> · <a href="/a-propos/">{{ t.about }}</a></p>
+    <p class="footer__credit">{{ t.photoBy }} : <a href="{{ site.photoCredit.url }}">Joachim – Shoot Me Again</a></p>
+  </footer>
+
+  {%- if site.goatcounter %}
+  {#- Statistiques GoatCounter : sans cookies, conforme RGPD #}
+  <script data-goatcounter="https://{{ site.goatcounter }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  {%- endif %}
+</body>
+</html>

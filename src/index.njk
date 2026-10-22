@@ -1,0 +1,40 @@
+---
+layout: base.njk
+hideNav: true
+bodyClass: home
+---
+{%- set t = i18n.fr -%}
+{%- set lang = "fr" -%}
+<header class="hero">
+  <div class="hero__photo">
+    {% image "/assets/img/live-joachim-shootmeagain.jpg", "", "100vw", "", true, [800, 1600] %}
+  </div>
+  <div class="hero__content">
+    <h1 class="hero__logo">
+      {% image "/assets/img/logo-dark.png", "Heavy Fuzz", "(min-width: 600px) 300px, 70vw", "", true, [300, 600] %}
+    </h1>
+    <p class="hero__tagline">{{ site.tagline.fr }}</p>
+  </div>
+  <p class="hero__credit"><a href="{{ site.photoCredit.url }}">{{ site.photoCredit.text }}</a></p>
+</header>
+
+<div class="wrap wrap--narrow">
+  <section aria-labelledby="prochain">
+    <h2 id="prochain" class="section-title">{{ t.nextConcert }}</h2>
+    {%- if concerts.next %}
+    {%- set c = concerts.next %}{% set big = true %}
+    {% include "concert-card.njk" %}
+    {%- else %}
+    <p class="empty">{{ t.noUpcoming }}</p>
+    {%- endif %}
+  </section>
+
+  <section aria-labelledby="liens">
+    <h2 id="liens" class="section-title">{{ t.allLinks }}</h2>
+    <ul class="links">
+      {%- for l in links %}
+      <li><a class="link" href="{{ l.url }}">{% icon l.icon %}<span>{{ l.label }}</span>{% icon "arrow", "icon icon--end" %}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+</div>

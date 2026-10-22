@@ -1,0 +1,17 @@
+{
+  "events": [
+    {
+      "date": "2026-10-23",
+      "title": "Mr. Bison",
+      "venue": "Belvédère, Namur",
+      "start": "20:00",
+      "end": "23:55",
+      "prices": [
+        {
+          "label": "X",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}

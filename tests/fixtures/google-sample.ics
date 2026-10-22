@@ -1,0 +1,56 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Heavy Fuzz – Concerts
+X-WR-TIMEZONE:Europe/Brussels
+BEGIN:VEVENT
+DTSTART:20261023T180000Z
+DTEND:20261023T215500Z
+DTSTAMP:20261020T120000Z
+UID:abc123@google.com
+CREATED:20261001T120000Z
+DESCRIPTION:Line-up: Mr. Bison\, Acid Talk\nBilletterie: https://www.billet
+ web.fr/mr-bison-it-acid-talk\nPrix: Prévente 13€\, Soutien 15€\nPortes: 20h
+ 00
+LAST-MODIFIED:20261020T120000Z
+LOCATION:Belvédère\, Avenue Marie d'Artois 1\, 5000 Namur\, Belgique
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Mr. Bison
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Brussels:20270305T193000
+DTEND;TZID=Europe/Brussels:20270306T010000
+DTSTAMP:20261020T120000Z
+UID:def456@google.com
+DESCRIPTION:<b>LINE UP :</b> Test Band<br>  tickets : <a href="https://www.b
+ illetweb.fr/test-band">https://www.billetweb.fr/test-band</a><br>PRIX: 10
+ € / 13 €<br>statut: SOLD OUT<br>Description EN: A heavy night.<br>Une soir
+ ée lourde et chaude.
+LOCATION:The Creed\, Rue de la Monnaie 20\, 5000 Namur
+STATUS:CONFIRMED
+SUMMARY:Riff Lords + Test Band
+ATTACH;FILENAME=affiche.jpg;FMTTYPE=image/jpeg:https://drive.google.com/fil
+ e/d/1AbCdEfGhIjKlMnOpQrStUvWxYz/view?usp=drive_web
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Brussels:20270410T200000
+DTEND;TZID=Europe/Brussels:20270410T235900
+DTSTAMP:20261020T120000Z
+UID:ghi789@google.com
+DESCRIPTION:Prix: prix libre\nAffiche: 2027-04-10-jam.jpg
+LOCATION:Café du Coin\, Rue Haute 3\, 5000 Namur
+STATUS:CANCELLED
+SUMMARY:[ANNULÉ] Jam Session
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20230101
+DTEND;VALUE=DATE:20230102
+DTSTAMP:20261020T120000Z
+UID:old@google.com
+SUMMARY:Vieux test à ignorer
+END:VEVENT
+END:VCALENDAR

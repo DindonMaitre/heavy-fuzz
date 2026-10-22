@@ -1,0 +1,47 @@
+---
+layout: base.njk
+title: Agenda
+description: Tous les concerts Heavy Fuzz à venir à Namur et en Wallonie, et les concerts passés.
+permalink: /agenda/
+---
+{%- set t = i18n.fr -%}
+{%- set lang = "fr" -%}
+<div class="wrap">
+  <h1 class="page-title">{{ t.upcoming }}</h1>
+
+  {%- if concerts.upcoming.length %}
+  <div class="cards">
+    {%- for c in concerts.upcoming %}
+    {% set big = false %}{% include "concert-card.njk" %}
+    {%- endfor %}
+  </div>
+  {%- else %}
+  <p class="empty">{{ t.noUpcoming }}</p>
+  {%- endif %}
+
+  <section id="abonnement" class="subscribe" aria-labelledby="abo-titre">
+    <h2 id="abo-titre" class="section-title">{% icon "bell" %} {{ t.subscribe }}</h2>
+    <p>{{ t.subscribeText }}</p>
+    {%- set feed = site.url | replace("https://", "") | replace("http://", "") %}
+    <div class="actions">
+      <a class="btn btn--primary" href="webcal://{{ feed }}/agenda.ics">{% icon "calendar" %}{{ t.subscribeApple }}</a>
+      <a class="btn btn--ghost" href="https://calendar.google.com/calendar/r?cid={{ ('webcal://' + feed + '/agenda.ics') | urlencode }}">{% icon "calendar" %}{{ t.subscribeGoogle }}</a>
+    </div>
+  </section>
+
+  {%- if concerts.past.length %}
+  <details class="past">
+    <summary><h2 class="section-title">{{ t.past }} ({{ concerts.past.length }})</h2></summary>
+    <ul class="gallery">
+      {%- for c in concerts.past %}
+      <li>
+        <a href="{{ c.url }}">
+          {%- if c.poster %}{% image c.poster, "", "(min-width: 760px) 200px, 45vw", "", false, [400] %}{% endif %}
+          <span class="gallery__caption"><strong>{{ c.summary }}</strong><br>{{ c.startUtc | date("fr-BE", "compact") }} · {{ c.venue.name }}</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </details>
+  {%- endif %}
+</div>

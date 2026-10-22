@@ -1,0 +1,76 @@
+{
+  "_aide": "Concerts ajoutés à la main (en plus du Google Agenda). Si un concert existe aussi dans Google Agenda (même date + même tête d'affiche), les champs remplis ici ont la priorité. Heures en heure belge.",
+  "events": [
+    {
+      "date": "2026-10-23",
+      "title": "Mr. Bison",
+      "tagline": "Heavy Fuzz Goes Psych!",
+      "lineup": ["Mr. Bison", "Acid Talk"],
+      "venue": "belvedere",
+      "doors": "20:00",
+      "end": "23:55",
+      "prices": [
+        { "label": "Prévente", "amount": 13 },
+        { "label": "Ticket de soutien", "amount": 15 },
+        { "label": "Étudiant (prévente)", "amount": 9 }
+      ],
+      "tickets": "https://www.billetweb.fr/mr-bison-it-acid-talk",
+      "poster": "2026-10-23-mr-bison.jpg",
+      "forFansOf": "Elder, King Buffalo, Colour Haze, Thee Oh Sees, All Them Witches, King Gizzard & The Lizard Wizard",
+      "description": {
+        "fr": "Un voyage à travers toutes les nuances du heavy psych. Mr. Bison (Italie) vient défendre son nouvel album « The Garden of Forgotten Dreams » pour sa toute première date en Wallonie, avec en ouverture les Liégeois d'Acid Talk.",
+        "en": "A journey through the many shades of heavy psych. Italy's Mr. Bison bring their new album “The Garden of Forgotten Dreams” to Wallonia for the very first time, with Liège garage-psych outfit Acid Talk opening.",
+        "nl": "Een reis door alle tinten van heavy psych. Het Italiaanse Mr. Bison speelt zijn nieuwe album „The Garden of Forgotten Dreams” voor het eerst in Wallonië, met de Luikse garagepsychband Acid Talk als voorprogramma."
+      }
+    },
+    {
+      "date": "2026-11-13",
+      "title": "FVZZ POPVLI",
+      "tagline": "X Anniversary 2016–2026",
+      "lineup": ["FVZZ POPVLI", "The WRS"],
+      "venue": "creed",
+      "doors": "19:30",
+      "end": "23:55",
+      "prices": [
+        { "label": "Prévente", "amount": 10 },
+        { "label": "Ticket de soutien", "amount": 13 }
+      ],
+      "tickets": "https://www.billetweb.fr/fvzz-popvli-creed",
+      "poster": "2026-11-13-fvzz-popvli.jpg",
+      "partners": "Heavy Fuzz × The Creed, avec HPS Booking / Heavy Psych Sounds",
+      "note": {
+        "fr": "Jauge limitée : 60 places seulement !",
+        "en": "Limited capacity: only 60 tickets!",
+        "nl": "Beperkte capaciteit: slechts 60 tickets!"
+      },
+      "forFansOf": "Giac Taylor, Uncle Acid & The Deadbeats, Kadavar, Witch, Dead Meadow",
+      "description": {
+        "fr": "Le power trio romain FVZZ POPVLI fête ses 10 ans de fuzz sur la route : heavy psych, proto-doom et garage rock, dans la cave voûtée du Creed. En ouverture, The WRS, garage psych made in Charleroi.",
+        "en": "Roman power trio FVZZ POPVLI celebrate ten years of fuzz on the road: heavy psych, proto-doom and garage rock in the vaulted cellar of The Creed. Opening: Charleroi garage-psych band The WRS.",
+        "nl": "Het Romeinse powertrio FVZZ POPVLI viert tien jaar fuzz op tournee: heavy psych, proto-doom en garagerock in de gewelfde kelder van The Creed. Voorprogramma: The WRS, garagepsych uit Charleroi."
+      }
+    },
+    {
+      "date": "2027-02-12",
+      "title": "Modder",
+      "tagline": "Heavy Fuzz Goes Sludge",
+      "lineup": ["Modder", "Aufhebung", "Massive Therapy"],
+      "venue": "belvedere",
+      "doors": "19:00",
+      "end": "23:55",
+      "prices": [
+        { "label": "Prévente", "amount": 15 },
+        { "label": "Ticket de soutien", "amount": 18 },
+        { "label": "Étudiant (prévente)", "amount": 12 }
+      ],
+      "tickets": "https://www.billetweb.fr/modder-aufhebung-massive-therapy",
+      "poster": "2027-02-12-modder.jpg",
+      "forFansOf": "Bongripper, Amenra, Neurosis, Conan, Crowbar, Russian Circles, Primitive Man",
+      "description": {
+        "fr": "Une soirée dévastatrice de sludge belge qui écrase les nuques. Modder (Gand) joue pour la première fois en Wallonie ; Aufhebung (Bruxelles) et Massive Therapy (Charleroi) pour la première fois à Namur.",
+        "en": "A devastating evening of neck-crushing Belgian sludge. Ghent's Modder play Wallonia for the first time; Aufhebung (Brussels) and Massive Therapy (Charleroi) make their Namur debut.",
+        "nl": "Een verwoestende avond vol nekbrekende Belgische sludge. Modder (Gent) speelt voor het eerst in Wallonië; Aufhebung (Brussel) en Massive Therapy (Charleroi) staan voor het eerst in Namen."
+      }
+    }
+  ]
+}
